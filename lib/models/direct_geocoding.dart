@@ -1,10 +1,12 @@
 import 'package:equatable/equatable.dart';
 
 class DirectGeocoding extends Equatable {
+  
   final String name;
   final double lat;
   final double lon;
   final String country;
+
   DirectGeocoding({
     required this.name,
     required this.lat,

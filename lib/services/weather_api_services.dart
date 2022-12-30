@@ -10,12 +10,15 @@ import '../models/weather.dart';
 import 'http_error_handler.dart';
 
 class WeatherApiServices {
+
   final http.Client httpClient;
+
   WeatherApiServices({
     required this.httpClient,
   });
 
   Future<DirectGeocoding> getDirectGeocoding(String city) async {
+
     final Uri uri = Uri(
       scheme: 'https',
       host: kApiHost,
@@ -36,19 +39,24 @@ class WeatherApiServices {
 
       final responseBody = json.decode(response.body);
 
-      if (responseBody.isEmpty) {
+      if (responseBody.isEmpty) {//when the list is empty
         throw WeatherException('Cannot get the location of $city');
       }
 
       final directGeocoding = DirectGeocoding.fromJson(responseBody);
 
       return directGeocoding;
+
     } catch (e) {
+
       rethrow;
+
     }
+
   }
 
   Future<Weather> getWeather(DirectGeocoding directGeocoding) async {
+
     final Uri uri = Uri(
       scheme: 'https',
       host: kApiHost,
@@ -73,8 +81,11 @@ class WeatherApiServices {
       final Weather weather = Weather.fromJson(weatherJson);
 
       return weather;
+
     } catch (e) {
+
       rethrow;
+      
     }
   }
 }

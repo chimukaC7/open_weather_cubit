@@ -1,6 +1,7 @@
 import 'package:equatable/equatable.dart';
 
 class Weather extends Equatable {
+  
   final String description;
   final String icon;
   final double temp;
@@ -9,6 +10,7 @@ class Weather extends Equatable {
   final String name;
   final String country;
   final DateTime lastUpdated;
+
   Weather({
     required this.description,
     required this.icon,
